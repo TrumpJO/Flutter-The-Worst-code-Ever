@@ -1,7 +1,12 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_sunday/main.dart';
+import 'package:flutter_sunday/themes/theme_values.dart';
+import 'package:flutter_sunday/custome_widgets/cust_dialog.dart';
+
+import 'custome_widgets/cust_nav.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,71 +19,16 @@ class _HomeState extends State<Home> {
   bool myValue = true;
   bool myValue2 = false;
   bool myvalue3 = false;
-  List<Color> Mycolors = [Colors.pink, Colors.white];
+
+  List<Color> homeBackGroundColors = ThemeValues.brightColorsBackground;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-
       body: Center(
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       ElevatedButton.icon(
-          //           onPressed: () {
-          //             showDialog(
-          //               context: context,
-          //               builder: (context) {
-          //                 return AlertDialog(
-          //                   actions: [
-          //                     Container(
-          //                         alignment: Alignment.topCenter,
-          //                         child: Text("Do you want to go to home page?")),
-          //                     Divider(
-          //                       height: 25,
-          //                     ),
-          //                     Container(
-          //                       child: Row(
-          //                         mainAxisAlignment: MainAxisAlignment.center,
-          //                         children: [
-          //                           ElevatedButton(
-          //                               onPressed: () {
-          //                                 showDialog(
-          //                                     context: context,
-          //                                     builder: (context) {
-          //                                       return AlertDialog(
-          //                                         content: Image.network(
-          //                                             "https://th.bing.com/th/id/OIP.qHAHjx6Gzs-A_jN6a8g_RAHaE-?pid=ImgDet&rs=1"),
-          //                                       );
-          //                                     });
-          //                               },
-          //                               child: Text("Yes")),
-          //                           SizedBox(
-          //                             width: 15,
-          //                           ),
-          //                           ElevatedButton(
-          //                               onPressed: () {
-          //                                 Navigator.pop(context, MaterialPageRoute(
-          //                                   builder: (context) {
-          //                                     return MyApp();
-          //                                   },
-          //                                 ));
-          //                               },
-          //                               child: Text("No")),
-          //                         ],
-          //                       ),
-          //                     )
-          //                   ],
-          //                 );
-          //               },
-          //             );
-          //           },
-          //           icon: Icon(Icons.home),
-          //           label: Text("Home"))
-          //     ],
-          //   ),
-          ),
+        child: homeElevatedButton(context),
+      ),
 
       // body: Center(
       //   child: Column(
@@ -241,4 +191,24 @@ class _HomeState extends State<Home> {
       // ),
     );
   }
+
+  ElevatedButton homeElevatedButton(BuildContext context) {
+    String _homeQuestion = "Do you want to go to home page?";
+    Icon _homeIcon = Icon(Icons.home);
+    Text _homeLabel = Text("Home");
+
+    return ElevatedButton.icon(
+      onPressed: () {
+        Cust_Dialog.dialogYesNoConfirmation(
+          context: context,
+          question: _homeQuestion,
+        );
+      },
+      icon: _homeIcon,
+      label: _homeLabel,
+    );
+  }
+
+
+
 }
