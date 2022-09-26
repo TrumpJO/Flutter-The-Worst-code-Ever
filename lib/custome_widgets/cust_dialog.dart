@@ -9,9 +9,9 @@ class Cust_Dialog {
     String question = "Are you Sure?",
     // ToDo: 
     // Function yesBtnFunction = (){},
-    // Function yesBtnFunction = (){},
+    // Function noBtnFunction = (){},
   }) {
-    return Cust_Dialog.showCustomeDialog(
+    return showCustomeDialog(
       context: context,
       widget: [
         _question_Container(question),
@@ -61,7 +61,8 @@ class Cust_Dialog {
     return ElevatedButton(
       onPressed: () {
         Cust_Nav.goToPreviousPage(context);
-        // ToDo: Dynamic Function here, to replace goToHomePage.
+        // ToDo: Dynamic Function here, 
+        // to replace goToHomePage with yesBtnFunction.
         TheHome.goToHomePage(context);
       },
       child: Text("Yes"),
@@ -74,6 +75,8 @@ class Cust_Dialog {
     return ElevatedButton(
       onPressed: () {
         Cust_Nav.goToPreviousPage(context);
+        // ToDo: Dynamic Function here, 
+        // to replace goToHomePage with noBtnFunction.
       },
       child: Text("No"),
     );
