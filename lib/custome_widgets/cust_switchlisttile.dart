@@ -14,7 +14,7 @@ void setFunction(Function function) {
 
 class Cust_SwitchListTile extends StatefulWidget {
   void revertSwitchValue() {
-    print("Swtich Val Revered");
+    // print("Swtich Val Revered");
     _value = _value.reverseValue();
   }
 

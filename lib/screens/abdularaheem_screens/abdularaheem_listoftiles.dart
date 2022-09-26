@@ -26,17 +26,6 @@ List<Color> homeBackGroundColors = ThemeValues.brightColorsBackground;
 class _Abdularaheem_ListOfTilesState extends State<Abdularaheem_ListOfTiles> {
   @override
   Widget build(BuildContext context) {
-    var cust_switchListTile_TEST = Cust_SwitchListTile(
-      function: (value) {
-        setState(() {
-          print("function printed");
-          revertSwitchValue();
-        });
-      },
-      title: "test Title",
-      subTitle: "test SubTitle",
-      secondary: Icon(Icons.abc),
-    );
     return Container(
       decoration: _backgroundDecoration(),
       child: Column(
@@ -47,7 +36,17 @@ class _Abdularaheem_ListOfTilesState extends State<Abdularaheem_ListOfTiles> {
           showContactInfo_SwitchListTile(context),
           changeTheme_SwitchListTile(),
           // ToDo(Cust_SwitchListTile_function): fix the Bug(function doesnt assigne a Function to Cust_SwitchListTile _function. _function stays empty)
-          cust_switchListTile_TEST
+          // Cust_SwitchListTile(
+          //   function: (value) {
+          //     setState(() {
+          //       // print("function printed");
+          //       revertSwitchValue();
+          //     });
+          //   },
+          //   title: "test Title",
+          //   subTitle: "test SubTitle",
+          //   secondary: Icon(Icons.abc),
+          // ),
         ],
       ),
     );
@@ -89,46 +88,48 @@ class _Abdularaheem_ListOfTilesState extends State<Abdularaheem_ListOfTiles> {
       subtitle: Text("Email,Mobile,Etc"),
       value: showContactInfo_SwitchValue,
       onChanged: (value) {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                actions: [
-                  Text("Do you want to proceed ?"),
-                  Text("yes"),
-                  Text("No")
-                ],
-                backgroundColor: Colors.green.shade300,
-                content: Container(
-                  color: Colors.lime.shade300,
-                  child: Column(
-                    children: [
-                      Divider(
-                        height: 100,
-                      ),
-                      Container(
-                        color: Colors.purple,
-                        child: Row(
-                          children: [Text("Mobile"), Text("962 797777777")],
+        if (value) {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  actions: [
+                    Text("Do you want to proceed ?"),
+                    Text("yes"),
+                    Text("No")
+                  ],
+                  backgroundColor: Colors.green.shade300,
+                  content: Container(
+                    color: Colors.lime.shade300,
+                    child: Column(
+                      children: [
+                        Divider(
+                          height: 100,
                         ),
-                      ),
-                      Divider(
-                        height: 100,
-                      ),
-                      Container(
-                        color: Colors.amber,
-                        child: Row(
-                          children: [
-                            Text("Email"),
-                            Text("Example@example.com")
-                          ],
+                        Container(
+                          color: Colors.purple,
+                          child: Row(
+                            children: [Text("Mobile"), Text("962 797777777")],
+                          ),
                         ),
-                      )
-                    ],
+                        Divider(
+                          height: 100,
+                        ),
+                        Container(
+                          color: Colors.amber,
+                          child: Row(
+                            children: [
+                              Text("Email"),
+                              Text("Example@example.com")
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              );
-            });
+                );
+              });
+        }
         setState(() {
           showContactInfo_SwitchValue =
               showContactInfo_SwitchValue.reverseValue();
