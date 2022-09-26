@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sunday/custome_extensions/bool_ext.dart';
 import 'package:flutter_sunday/screens/abdularaheem_screens/abdularaheem_home.dart';
 
+import '../../custome_widgets/cust_switchlisttile.dart';
 import '../../themes/theme_values.dart';
 
 /// third blockOfAbdularaheemCode
@@ -25,18 +26,28 @@ List<Color> homeBackGroundColors = ThemeValues.brightColorsBackground;
 class _Abdularaheem_ListOfTilesState extends State<Abdularaheem_ListOfTiles> {
   @override
   Widget build(BuildContext context) {
+    var cust_switchListTile_TEST = Cust_SwitchListTile(
+      function: (value) {
+        setState(() {
+          print("function printed");
+          revertSwitchValue();
+        });
+      },
+      title: "test Title",
+      subTitle: "test SubTitle",
+      secondary: Icon(Icons.abc),
+    );
     return Container(
       decoration: _backgroundDecoration(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // ToDo: replace what inside these three methods with a Cust_SwtichListTile, when ToDo(Cust_SwitchListTile_function) is Done.
           exit_SwitchListTile(),
           showContactInfo_SwitchListTile(context),
           changeTheme_SwitchListTile(),
-          switchListTile(
-            function: () => print("object"),
-            secondary: Icon(Icons.abc),
-          )
+          // ToDo(Cust_SwitchListTile_function): fix the Bug(function doesnt assigne a Function to Cust_SwitchListTile _function. _function stays empty)
+          cust_switchListTile_TEST
         ],
       ),
     );
@@ -66,22 +77,6 @@ class _Abdularaheem_ListOfTilesState extends State<Abdularaheem_ListOfTiles> {
           exit(1);
         });
       },
-    );
-  }
-
-  SwitchListTile switchListTile({
-    required Function function,
-    bool value = false,
-    String title = "Title",
-    String subTitle = "",
-    Icon? secondary,
-  }) {
-    return SwitchListTile(
-      value: value,
-      onChanged: (value) => function,
-      title: Text(title),
-      subtitle: Text(subTitle),
-      secondary: secondary,
     );
   }
 
