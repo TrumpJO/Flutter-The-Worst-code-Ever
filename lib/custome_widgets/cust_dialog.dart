@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/the_home.dart';
+import '../screens/abdularaheem_screens/abdularaheem_home.dart';
 import 'cust_nav.dart';
 
 class Cust_Dialog {
@@ -27,6 +27,7 @@ class Cust_Dialog {
       builder: (context) {
         return AlertDialog(
           actions: widget,
+          
         );
       },
     );
@@ -63,7 +64,7 @@ class Cust_Dialog {
         Cust_Nav.goToPreviousPage(context);
         // ToDo: Dynamic Function here, 
         // to replace goToHomePage with yesBtnFunction.
-        TheHome.goToHomePage(context);
+        Abdularaheem_Home.goToHomePage(context);
       },
       child: Text("Yes"),
     );
@@ -75,8 +76,7 @@ class Cust_Dialog {
     return ElevatedButton(
       onPressed: () {
         Cust_Nav.goToPreviousPage(context);
-        // ToDo: Dynamic Function here, 
-        // to replace goToHomePage with noBtnFunction.
+        // ToDo: Dynamic Function here
       },
       child: Text("No"),
     );
