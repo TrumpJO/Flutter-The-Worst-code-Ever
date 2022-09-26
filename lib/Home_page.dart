@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_sunday/main.dart';
+import 'package:flutter_sunday/screens/the_home.dart';
 import 'package:flutter_sunday/themes/theme_values.dart';
 import 'package:flutter_sunday/custome_widgets/cust_dialog.dart';
 
@@ -27,7 +28,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: homeElevatedButton(context),
+        child: TheHome.homeElevatedButton(context),
       ),
 
       // body: Center(
@@ -91,6 +92,7 @@ class _HomeState extends State<Home> {
       //     ],
       //   ),
       // )
+
       // body: Container(
       //   decoration: BoxDecoration(gradient: LinearGradient(colors: Mycolors)),
       //   child: Center(
@@ -149,7 +151,6 @@ class _HomeState extends State<Home> {
       //                               ],
       //                             ),
       //                           ),
-
       //                           Divider(
       //                             height: 100,
       //                           ),
@@ -192,22 +193,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-  ElevatedButton homeElevatedButton(BuildContext context) {
-    String _homeQuestion = "Do you want to go to home page?";
-    Icon _homeIcon = Icon(Icons.home);
-    Text _homeLabel = Text("Home");
-
-    return ElevatedButton.icon(
-      onPressed: () {
-        Cust_Dialog.dialogYesNoConfirmation(
-          context: context,
-          question: _homeQuestion,
-        );
-      },
-      icon: _homeIcon,
-      label: _homeLabel,
-    );
-  }
 
 
 

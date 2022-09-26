@@ -10,4 +10,21 @@ class TheHome {
       widget: [homePage],
     );
   }
+
+  static ElevatedButton homeElevatedButton(BuildContext context) {
+    String _homeQuestion = "Do you want to go to home page?";
+    Icon _homeIcon = Icon(Icons.home);
+    Text _homeLabel = Text("Home");
+
+    return ElevatedButton.icon(
+      onPressed: () {
+        Cust_Dialog.dialogYesNoConfirmation(
+          context: context,
+          question: _homeQuestion,
+        );
+      },
+      icon: _homeIcon,
+      label: _homeLabel,
+    );
+  }
 }
