@@ -18,6 +18,7 @@ class Abdularaheem_ListOfTiles extends StatefulWidget {
       _Abdularaheem_ListOfTilesState();
 }
 
+bool switchVal = false;
 bool exit_SwitchValue = true;
 bool showContactInfo_SwitchValue = false;
 bool theme_SwitchValue = false;
@@ -36,17 +37,19 @@ class _Abdularaheem_ListOfTilesState extends State<Abdularaheem_ListOfTiles> {
           showContactInfo_SwitchListTile(context),
           changeTheme_SwitchListTile(),
           // ToDo(Cust_SwitchListTile_function): fix the Bug(function doesnt assigne a Function to Cust_SwitchListTile _function. _function stays empty)
-          // Cust_SwitchListTile(
-          //   function: (value) {
-          //     setState(() {
-          //       // print("function printed");
-          //       revertSwitchValue();
-          //     });
-          //   },
-          //   title: "test Title",
-          //   subTitle: "test SubTitle",
-          //   secondary: Icon(Icons.abc),
-          // ),
+          Cust_SwitchListTile(
+            value :switchVal,
+            function: (Myyvalue) {
+              setState(() {
+                switchVal = Myyvalue;
+                print("function printed");
+                // revertSwitchValue();
+              });
+            },
+            title: "test Title",
+            subTitle: "test SubTitle",
+            secondary: Icon(Icons.abc),
+          ),
         ],
       ),
     );

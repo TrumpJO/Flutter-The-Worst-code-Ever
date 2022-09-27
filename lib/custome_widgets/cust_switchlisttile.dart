@@ -2,33 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sunday/custome_extensions/bool_ext.dart';
 import 'package:flutter_sunday/screens/abdularaheem_screens/abdularaheem_listtile.dart';
 
-Function(bool)? _function;
-bool _value = false;
-String _title = "";
-String _subTitle = "";
-Icon? _secondary;
-
-void setFunction(Function function) {
-  _function = function(_value);
-}
-
 class Cust_SwitchListTile extends StatefulWidget {
   void revertSwitchValue() {
     // print("Swtich Val Revered");
-    _value = _value.reverseValue();
+    //_value = _value.reverseValue();
   }
-
+  final Function(bool ValueOnChanged) ?function;
+//bool _value = false ;
+  final bool value;
+  String _title = "";
+  String _subTitle = "";
+  Icon? _secondary;
   Cust_SwitchListTile({
     super.key,
-    required Function(bool) function,
-    bool value = false,
+    //required Function(bool ValueOnChanged) function,
+
     String title = "",
     String subTitle = "",
     Icon? secondary,
+    required this.function,
+    required this.value,
   }) {
-    // _function = function;
-    setFunction(function);
-    _value = value;
+    //_function = function;
+    // setFunction(function());
+    // _value = value :
     _title = title;
     _subTitle = subTitle;
     _secondary = secondary;
@@ -42,24 +39,30 @@ class _Cust_SwitchListTileState extends State<Cust_SwitchListTile> {
   @override
   Widget build(BuildContext context) {
     return SwitchListTile(
-      value: _value,
-      onChanged: (value) {
+      //value: widget._value,
+      value: widget.value,
+      onChanged: (ValueOnChanged) {
         setState(
           () {
             print("\n,\n.\nsetState has been Activated!");
-            _function;
-            print(_function.toString());
+            widget.function!(ValueOnChanged);
+            print(widget.function!(ValueOnChanged).toString());
           },
         );
       },
-      title: Text(_title),
-      subtitle: Text(_subTitle),
-      secondary: _secondary,
+      title: Text(widget._title),
+      subtitle: Text(widget._subTitle),
+      secondary: widget._secondary,
     );
   }
+
+//   void setFunction(Function function) {
+//   _function = function(_value);
+// }
+
 }
 
-void revertSwitchValue() {
-  print("revertSwitchValue");
-  _value = _value.reverseValue();
-}
+// void revertSwitchValue() {
+//   print("revertSwitchValue");
+//   _value = _value.reverseValue();
+// }
